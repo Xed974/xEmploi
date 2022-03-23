@@ -25,11 +25,11 @@ local stockageServer = {}
 
 RegisterNetEvent('xEmploi:check')
 AddEventHandler('xEmploi:check', function()
-
+    local _source = source
     MySQL.Async.fetchAll("SELECT * FROM emploi", {}, function(result)
         if (result) then
             stockageServer = result
-            TriggerClientEvent('xEmploi:result', -1, stockageServer)
+            TriggerClientEvent('xEmploi:result', (_source), stockageServer)
         end
     end)
 
